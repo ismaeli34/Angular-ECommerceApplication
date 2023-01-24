@@ -1,0 +1,28 @@
+mat-grid-tile {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+
+  .home-page-product-image{
+    max-width: 80%;
+    max-height: 80%;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto;
+
+  }
+
+
+
+
+  .image-container{
+    position: relative;
+    height: 200px;
+
+
+
+  }
