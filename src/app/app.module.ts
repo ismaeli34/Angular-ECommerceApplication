@@ -28,6 +28,9 @@ import { ShowProductsComponent } from './show-products/show-products.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShowProductImagesDialogComponent } from './show-product-images-dialog/show-product-images-dialog.component';
+import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
+import { BuyProductComponent } from './buy-product/buy-product.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 
 
@@ -44,7 +47,10 @@ import { ShowProductImagesDialogComponent } from './show-product-images-dialog/s
     AddNewProductComponent,
     DragDirective,
     ShowProductsComponent,
-    ShowProductImagesDialogComponent
+    ShowProductImagesDialogComponent,
+    ProductViewDetailsComponent,
+    BuyProductComponent,
+    OrderConfirmationComponent,
   ],
   imports: [
     BrowserModule,

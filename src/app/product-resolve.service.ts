@@ -13,12 +13,16 @@ export class ProductResolveService implements Resolve<Product> {
 
   constructor(private productService:ProductService,
      private imageService:ImageProcessingService) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<Product>  {
+
+  resolve(route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot):  Observable<Product>  {
 
     const id =route.paramMap.get("productId");
     if(id){
       //then we have to fetch details from backend
-     return this.productService.getProductDetailsById(id).pipe(map(p=> this.imageService.createImages(p)));
+     return this.productService
+     .getProductDetailsById(id)
+     .pipe(map(p=> this.imageService.createImages(p)));
     }else{
       //return empty product observable
       return of(this.getProductDetails());

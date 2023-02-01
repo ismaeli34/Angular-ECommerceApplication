@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Product } from '../_model/Product.model';
 import { ImageProcessingService } from '../_services/image-processing.service';
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   productDetails:Product[]=[];
 
   constructor(private productService:ProductService,
+    private router:Router,
     private imageProcessingService:ImageProcessingService) { }
 
   ngOnInit(): void {
@@ -38,6 +40,10 @@ export class HomeComponent implements OnInit {
         
       }
     )
+  }
+
+  viewDetails(productId){
+    this.router.navigate(['/product-view-details',{productId:productId}])
   }
 
 }
