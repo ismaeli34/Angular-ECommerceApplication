@@ -20,6 +20,9 @@ import { ProductService } from '../_services/product.service';
 })
 export class ShowProductsComponent implements OnInit {
 
+  pageNumber:number=0;
+  showTable:boolean = false;
+  showLoadMoreButton:boolean=false;
   productDetails:Product[]=[];
   displayedColumns: string[] = ['Id', 'Name', 'Description', 'Discounted Price','Product Actual Price','Actions'];
 
@@ -36,15 +39,32 @@ export class ShowProductsComponent implements OnInit {
   }
 
 
-  public getAllProducts(){
+  searchByKeyword(searchKeyword){
+    console.log(searchKeyword); 
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProducts(searchKeyword);
 
-    this.productService.getAllProducts()
+  }
+
+  public getAllProducts(searchKeyword:string=""){
+    this.showTable=false;
+    this.productService.getAllProducts(this.pageNumber,searchKeyword)
     .pipe(
       map((x:Product[], i)=> x.map((product:Product)=>this.imageProcessingService.createImages(product)))
     )
     .subscribe((response:Product[])=>{
-      console.log(response);
-      this.productDetails= response;
+      // console.log(response);
+      if(response.length===5){
+        this.showLoadMoreButton = true;
+      }
+      else{
+        this.showLoadMoreButton=false;
+      }
+      response.forEach(p=>this.productDetails.push(p))      
+      this.showTable=true;  
+
+      // this.productDetails= response;
       
     },
     (error:HttpErrorResponse)=>{
@@ -88,6 +108,12 @@ export class ShowProductsComponent implements OnInit {
     this.router.navigate(['/addNewProduct',{productId:productId}]);
     console.log(productId);
     
+
+  }
+
+  loadMoreProducts(){
+    this.pageNumber = this.pageNumber+1;
+    this.getAllProducts();
 
   }
 

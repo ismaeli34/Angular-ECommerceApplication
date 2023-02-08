@@ -20,6 +20,11 @@ export class UserService {
     });
   }
 
+  public register(registerData){
+    return this.httpclient.post(this.PATH_OF_API + '/registerNewUser',registerData);
+
+  }
+
   public forUser() {
     return this.httpclient.get(this.PATH_OF_API + '/forUser', {
       responseType: 'text',
@@ -32,6 +37,9 @@ export class UserService {
       responseType: 'text',
     });
   }
+
+
+
 
   public roleMatch(allowedRoles): boolean {
     let isMatch = false;

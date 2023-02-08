@@ -1,73 +1,76 @@
-<div class="mt-5 p-8">
+<div class="mt-5 p-10" style="padding: 35px;">
 
-<table mat-table [dataSource]="productDetails " class="mat-elevation-z8">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Search any product</mat-label>
+    <input 
+    #searchkeyword
+    (keyup)="searchByKeyword(searchkeyword.value)"
+    ngModel
+    name="searchKey"
+    id="searchKey" matInput placeholder="Search any product">
+</mat-form-field>
+
+  <div *ngIf="showTable">
+
+    <table  mat-table [dataSource]="productDetails " class="mat-elevation-z8">
 
   
-    <!-- Position Column -->
-    <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef>  Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="Description">
-      <th mat-header-cell *matHeaderCellDef>  Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="Discounted Price">
-      <th mat-header-cell *matHeaderCellDef> Discounted Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.productDiscountedPrice}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="Product Actual Price">
-        <th mat-header-cell *matHeaderCellDef> Product Actual Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.productActualPrice}} </td>
+      <!-- Position Column --> 
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
       </ng-container>
-
-
-      <ng-container matColumnDef="Actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let element"> 
-            <button (click)="showImages(element)" color="primary" mat-icon-button >
-                <mat-icon>images</mat-icon>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>  Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>  Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.productDescription}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Discounted Price">
+        <th mat-header-cell *matHeaderCellDef> Discounted Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.productDiscountedPrice}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Product Actual Price">
+          <th mat-header-cell *matHeaderCellDef> Product Actual Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.productActualPrice}} </td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element"> 
+              <button (click)="showImages(element)" color="primary" mat-icon-button >
+                  <mat-icon>images</mat-icon>
+              </button>
+              <button (click)="editProductElements(element.productId)" color="primary" mat-icon-button >
+                <mat-icon>edit</mat-icon>
             </button>
-            <button (click)="editProductElements(element.productId)" color="primary" mat-icon-button >
-              <mat-icon>edit</mat-icon>
+  
+            <button (click)="deleteProduct(element.productId)" color="warn" mat-icon-button>
+              <mat-icon>delete</mat-icon>
           </button>
+              
+          </td>
+        </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
-          <button (click)="deleteProduct(element.productId)" color="warn" mat-icon-button>
-            <mat-icon>delete</mat-icon>
-        </button>
-            
-        </td>
-      </ng-container>
+  </div>
 
-      <!-- <ng-container matColumnDef="Edit">
-        <th mat-header-cell *matHeaderCellDef> Edit </th>
-        <td mat-cell *matCellDef="let element"> 
-           
-            
-        </td>
-      </ng-container>
 
-      <ng-container matColumnDef="Delete">
-        <th mat-header-cell *matHeaderCellDef> Delete </th>
-        <td mat-cell *matCellDef="let element"> 
-           
-            
-        </td>
-      </ng-container> -->
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <div class="text-center mt-5" style="padding: 30px;" *ngIf="showLoadMoreButton">
+    <button (click)="loadMoreProducts()" type="button" mat-raised-button color="primary">Load More</button>
+  </div>
   
 </div>
