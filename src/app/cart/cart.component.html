@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div *ngIf="cartDetails.length!=0" class="container mt-5">
 
     <div align="right" class="mb-3">
         <button (click)="checkout()" color="primary" mat-raised-button>Checkout</button>
@@ -28,11 +28,34 @@
             <td mat-cell *matCellDef="let element"> {{element.product.productDiscountedPrice}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> 
+
+              <button (click)="deleteCart(element.cartId)" color="warn" mat-raised-button >Delete</button>
+            </td>
+          </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
         </table>
 
+
+
+    
+      
+      
+
 </div>
 
 
+<div class="container mt-5">
+
+<div *ngIf="cartDetails.length===0" class="card p-5 text-center" >
+      
+  <h1> Your Cart is Empty. Please add some products inside the cart</h1>
+</div>
+
+
+</div>

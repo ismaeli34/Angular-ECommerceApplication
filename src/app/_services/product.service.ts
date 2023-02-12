@@ -43,8 +43,8 @@ export class ProductService {
   }
 
 
-  public placeOrder(orderDetail:OrderDetails){
-    return this.httpClient.post("http://localhost:8080/placeOrder",orderDetail)
+  public placeOrder(orderDetail:OrderDetails,isCartCheckout){
+    return this.httpClient.post("http://localhost:8080/placeOrder/"+isCartCheckout,orderDetail);
   }
 
 
@@ -56,4 +56,12 @@ export class ProductService {
   public getCartDetails(){
   return this.httpClient.get("http://localhost:8080/getCartDetails");
   }
+
+
+
+  public deleteCartItem(cartId){
+    return this.httpClient.delete("http://localhost:8080/deleteCartItem/"+cartId);
+
+  }
+
 }

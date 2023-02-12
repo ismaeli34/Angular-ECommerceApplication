@@ -30,7 +30,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CartComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name','Description','Price','Discounted Price'];
+  displayedColumns: string[] = ['Name','Description','Price','Discounted Price','Action'];
 
   cartDetails:any[] = [];
 
@@ -42,6 +42,21 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
 
     this.getCartDetails();
+  }
+
+  deleteCart(cartId){
+this.productService.deleteCartItem(cartId).subscribe(
+  (response)=>{
+    console.log(response);
+    this.getCartDetails();
+
+  },
+  (error)=>{
+    console.log(error);
+    
+  }
+  )
+
   }
 
   checkout(){
