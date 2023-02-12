@@ -8,6 +8,7 @@ import { CartComponent } from "./cart/cart.component";
 import { ForbiddenComponent } from "./forbidden/forbidden.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { MyOrdersComponent } from "./my-orders/my-orders.component";
 import { OrderConfirmationComponent } from "./order-confirmation/order-confirmation.component";
 import { ProductResolveService } from "./product-resolve.service";
 import { ProductViewDetailsComponent } from "./product-view-details/product-view-details.component";
@@ -62,6 +63,12 @@ const routes: Routes = [
   {
     path:"order-confirmation",
     component:OrderConfirmationComponent,
+    canActivate:[AuthGuard],
+    data:{roles:["User"]}
+  },
+  {
+    path:"my-orders",
+    component:MyOrdersComponent,
     canActivate:[AuthGuard],
     data:{roles:["User"]}
   },
