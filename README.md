@@ -1,6 +1,7 @@
 # Angular E-commerce application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+Angular ecommerce application is a software program that allows businesses to sell products or services online through a website or mobile application. It typically includes features such as product catalogs, shopping carts, and order management systems to enable customers to browse, select, purchase, and receive products or services online.
+
 
 ## Languages and Tools
 
