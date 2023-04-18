@@ -17,6 +17,8 @@ Angular ecommerce application is a software program that allows businesses to se
 ![Screenshot 2023-04-13 at 12 30 19 PM](https://user-images.githubusercontent.com/17925504/231732882-68eb8cee-3f0f-43d1-91e7-51fb99e0a336.png)
 ## Order Information Screen
 ![Screenshot 2023-04-13 at 12 30 46 PM](https://user-images.githubusercontent.com/17925504/231732898-3ed3e5bc-9bd5-454a-98b0-c0ad61000c1a.png)
+## Frontend and Backend Communication
+![process](https://user-images.githubusercontent.com/17925504/232761954-a2a637d8-e741-43ba-9ef8-38ff80be1ff6.png)
 
 
 ## Development server
